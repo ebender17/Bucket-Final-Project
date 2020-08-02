@@ -1,0 +1,14 @@
+html,
+body,
+#container {
+    width: 100%;
+    text-align: center;
+}
+
+#game-container {
+    margin: 0 auto;
+}
+
+#game-container>canvas {
+    border-radius: 5px;
+}
