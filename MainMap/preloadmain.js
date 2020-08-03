@@ -31,6 +31,7 @@ class preloadmain extends Phaser.Scene {
         this.load.image("player-right", "mainmap/assets/sprites/boy-right.png");
         this.load.image("player-left", "mainmap/assets/sprites/boy-left.png");
         this.load.image("entryway", "mainmap/assets/sprites/entry.png");
+        this.load.image("path", "mainmap/assets/sprites/path.png");
     }
 
     create() {
