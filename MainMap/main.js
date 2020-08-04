@@ -15,22 +15,24 @@ class main extends Phaser.Scene {
         worldLayer.setCollisionByProperty({ collides: true });
         aboveLayer.setDepth(10);
 
+        this.entry1 = this.physics.add.sprite(56, 728, "entryway");
+        this.entry2 = this.physics.add.sprite(40, 152, "entryway");
+        this.entry3 = this.physics.add.sprite(600, 120, "entryway");
+        this.path = this.physics.add.sprite(680, 184, "path");
+        this.ghost = this.physics.add.sprite(608, 672, "ghost");
+        this.ghost.play("ghost-anim");
+
         this.player = this.physics.add
             .sprite(592, 672, "player-front")
             .setSize(10, 16)
             .setOffset(0, 4);
-
-        this.entry1 = this.physics.add.sprite(56, 728, "entryway");
-        this.entry2 = this.physics.add.sprite(40, 152, "entryway");
-        this.entry3 = this.physics.add.sprite(600, 120, "entryway");
-        this.ghost = this.physics.add.sprite(608, 672, "ghost");
-        this.ghost.play("ghost-anim");
 
         this.physics.add.collider(this.player, worldLayer);
 
         this.physics.add.overlap(this.player, this.entry1, this.loadHouse1, null, this);
         this.physics.add.overlap(this.player, this.entry2, this.loadHouse2, null, this);
         this.physics.add.overlap(this.player, this.entry3, this.loadHouse3, null, this);
+        this.physics.add.overlap(this.player, this.path, this.getWater, null, this);
         this.physics.add.overlap(this.player, this.ghost, this.winGame, null, this);
 
         const anims = this.anims;
@@ -71,9 +73,20 @@ class main extends Phaser.Scene {
         }
     }
 
-    winGame() {
+    getWater() {
         if (config.inventory.some(item => item === "bucket")) {
+            config.inventory.push("water");
+            console.log("Water added to bucket");
+        } else {
+            console.log("Missing Bucket");
+        }
+    }
+
+    winGame() {
+        if (config.inventory.some(item => item === "water")) {
             console.log("You Win!!!!!!")
+        } else if (config.inventory.some(item => item === "bucket")) {
+            console.log("Missing Water");
         } else {
             console.log("Missing Bucket");
         }
