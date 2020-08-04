@@ -46,6 +46,7 @@ class main extends Phaser.Scene {
 
 
         this.cursorKeys = this.input.keyboard.createCursorKeys();
+
     }
 
     loadHouse1() {
@@ -64,8 +65,7 @@ class main extends Phaser.Scene {
 
     loadHouse3() {
         if (config.inventory.some(item => item === "key2")) {
-            config.inventory.push("bucket");
-            console.log("bucket added to the inventory");
+            this.scene.start("hangman");
         } else {
             console.log("Missing Key 2");
         }
