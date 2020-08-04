@@ -5,6 +5,7 @@ class main extends Phaser.Scene {
 
     create() {
         const map = this.make.tilemap({ key: "map" });
+        
         this.setWeather();
 
         const tileset = map.addTilesetImage("final_proj", "tiles");
