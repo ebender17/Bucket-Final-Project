@@ -44,6 +44,7 @@ class main extends Phaser.Scene {
 
 
         this.cursorKeys = this.input.keyboard.createCursorKeys();
+
     }
 
     loadHouse1() {

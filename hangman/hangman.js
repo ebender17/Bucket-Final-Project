@@ -49,6 +49,7 @@ class hangman extends Phaser.Scene{
             this.guessInput.disabled = true; 
             this.guessButton.disabled = true; 
 
+            //Win game 
             if(this.didWin === true) { 
               this.win_text = this.add.bitmapText(500, 200, "pixelFont", "You won!", 48); 
               this.win_text.tint = 0xffffff; 
@@ -56,24 +57,32 @@ class hangman extends Phaser.Scene{
               //Add bucket to inventory and go back to main map 
               config.inventory.push("bucket");
               console.log("bucket added to the inventory");
-              this.scene.start("main");
+              this.time.delayedCall(3000, () => { 
+                this.scene.start("main")
+              });
+
+              //wonHangman set to true 
+              config.wonHangman = true; 
 
               //Remove html input 
               this.hangmanWrapper.classList.add("d-none");
 
-            } else if(this.didWin === false) { 
+            } 
+            //Loose game 
+            else if(this.didWin === false) { 
               this.loose_text = this.add.bitmapText(500, 200, "pixelFont", "You lost.", 48); 
               this.loose_text.tint = 0xffffff;
 
               //Go back to main map
-              this.scene.start("main");
+              this.time.delayedCall(3000, () => { 
+                this.scene.start("main")
+              }); 
               
               //Remove html input 
               this.hangmanWrapper.classList.add("d-none");
-            }}  
+            }
+          }  
         }.bind(this));
-
-
     }
 
     async getRandomWord() { 
