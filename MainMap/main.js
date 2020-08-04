@@ -5,6 +5,8 @@ class main extends Phaser.Scene {
 
     create() {
         const map = this.make.tilemap({ key: "map" });
+        
+        this.setWeather();
 
         const tileset = map.addTilesetImage("final_proj", "tiles");
 
@@ -46,6 +48,7 @@ class main extends Phaser.Scene {
 
 
         this.cursorKeys = this.input.keyboard.createCursorKeys();
+
     }
 
     loadHouse1() {
@@ -64,8 +67,7 @@ class main extends Phaser.Scene {
 
     loadHouse3() {
         if (config.inventory.some(item => item === "key2")) {
-            config.inventory.push("bucket");
-            console.log("bucket added to the inventory");
+            this.scene.start("hangman");
         } else {
             console.log("Missing Key 2");
         }
@@ -129,6 +131,21 @@ class main extends Phaser.Scene {
             else if (prevVelocity.x > 0) this.player.setTexture("player-right");
             else if (prevVelocity.y < 0) this.player.setTexture("player-back");
             else if (prevVelocity.y > 0) this.player.setTexture("player-front");
+        }
+    }
+
+    fetchWeather() {
+        return fetch('https://api.openweathermap.org/data/2.5/onecall?lat=39.1031&lon=84.5120&exclude=minutely,hourly,daily&appid=a9915cce5540225f7997bb5ed0988782')
+        .then(response => response.json());
+    }
+    
+    async setWeather(){
+        try{
+            const response = await this.fetchWeather();
+            console.log(response.current.weather[0].main);
+        }
+        catch{
+            console.log("oof");
         }
     }
 
