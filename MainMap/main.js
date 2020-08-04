@@ -66,8 +66,6 @@ class main extends Phaser.Scene {
     loadHouse3() {
         if (config.inventory.some(item => item === "key2")) {
             this.scene.start("hangman");
-            // config.inventory.push("bucket");
-            // console.log("bucket added to the inventory");
         } else {
             console.log("Missing Key 2");
         }

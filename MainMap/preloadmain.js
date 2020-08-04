@@ -32,10 +32,11 @@ class preloadmain extends Phaser.Scene {
         this.load.image("player-left", "mainmap/assets/sprites/boy-left.png");
         this.load.image("entryway", "mainmap/assets/sprites/entry.png");
 
-        this.load.bitmapFont("pixelFont", "../hangman/assets/fonts/font.png", "../hangman/assets/fonts/font.xml");
         this.load.image("path", "mainmap/assets/sprites/path.png");
 
         //Hangman assets 
+        this.load.bitmapFont("pixelFont", "../hangman/assets/fonts/font.png", "../hangman/assets/fonts/font.xml");
+        
         this.load.image("hangman_background", "../hangman/assets/background/parallax-demon-woods-bg.png");
         this.load.image("far_trees", "../hangman/assets/background/parallax-demon-woods-far-trees.png"); 
         this.load.image("mid_trees", "../hangman/assets/background/parallax-demon-woods-mid-trees.png"); 
