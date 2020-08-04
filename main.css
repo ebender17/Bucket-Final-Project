@@ -12,3 +12,17 @@ body,
 #game-container>canvas {
     border-radius: 5px;
 }
+
+.d-none { 
+    display: none; 
+}
+
+div {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 24px;
+    color: #ffffff; 
+}
+
+input {
+    font-family: 'Press Start 2P', cursive;
+}
