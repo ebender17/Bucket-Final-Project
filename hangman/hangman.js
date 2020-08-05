@@ -6,7 +6,7 @@ class hangman extends Phaser.Scene {
     create() {
         (async() => {
             this.word = await this.getRandomWord();
-            this.wordHolderText.innerHTML = this.getWordHolderText();
+            this.wordHolderText.innerHTML = await this.getWordHolderText();
         })();
 
         this.background = this.add.tileSprite(0, 0, config.width, config.height, 'hangman_background').setScale(2);
