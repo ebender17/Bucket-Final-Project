@@ -5,8 +5,11 @@
     <meta charset="utf-8" />
     <title> Adventure Game </title>
     <script type="text/javascript" src="phaser.min.js"></script>
-    <link rel="stylesheet" href="main.css"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="main.css">
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="mainmenu/LoadingScene.js"></script>
+    <script type="text/javascript" src="mainmenu/StartScene.js"></script>
     <script type="text/javascript" src="mainmap/main.js"></script>
     <script type="text/javascript" src="mainmap/preloadmain.js"></script>
     <script type="text/javascript" src="rockpaperscissors/rps_logic.js"></script>
@@ -18,18 +21,15 @@
 <body>
     <div id="container">
         <div id="game-container">
-            <div id="hangmanWrapper" class="d-none"> 
+            <div id="hangmanWrapper" class="d-none">
                 <form id="guessForm">
-                    <input
-                    type="text"
-                    id="guessInput"
-                    />
+                    <input type="text" id="guessInput" />
                     <input type="submit" id="guessSubmitButton" value="Guess" />
                 </form>
                 <div id="guesses"></div>
                 <br />
                 <div id="wordHolder"></div>
-            </div> 
+            </div>
         </div>
     </div>
 </body>

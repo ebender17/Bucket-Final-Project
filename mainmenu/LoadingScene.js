@@ -1,15 +1,15 @@
 class LoadingScene extends Phaser.Scene {
-  constructor() {
-    super("bootGame");
-  }
-  
-  preload(){
-    this.load.image("startButton", "assets/images/startButton.png");
-    this.load.image("mainMap", "assets/images/main.png");
-  }
+    constructor() {
+        super("bootLoad");
+    }
 
-  create(){
-    this.add.text(20,20, "Loading game...");
-    this.scene.start("TitleScene");
-  }
+    preload() {
+        this.load.image("startButton", "mainmenu/assets/startButton.png");
+        this.load.image("mainMap", "mainmenu/assets/main.png");
+    }
+
+    create() {
+        this.add.text(20, 20, "Loading game...");
+        this.scene.start("TitleScene");
+    }
 }

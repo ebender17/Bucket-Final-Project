@@ -5,7 +5,7 @@ class main extends Phaser.Scene {
 
     create() {
         const map = this.make.tilemap({ key: "map" });
-        
+
         this.setWeather();
 
         const tileset = map.addTilesetImage("final_proj", "tiles");
@@ -24,10 +24,28 @@ class main extends Phaser.Scene {
         this.ghost = this.physics.add.sprite(608, 672, "ghost");
         this.ghost.play("ghost-anim");
 
-        this.player = this.physics.add
-            .sprite(592, 672, "player-front")
-            .setSize(10, 16)
-            .setOffset(0, 4);
+        //Loads player back into correct location based off where they last came from
+        if (config.lastScene === "mainmenu") {
+            this.player = this.physics.add
+                .sprite(592, 672, "player-front")
+                .setSize(10, 16)
+                .setOffset(0, 4);
+        } else if (config.lastScene === "flappybird") {
+            this.player = this.physics.add
+                .sprite(56, 748, "player-front")
+                .setSize(10, 16)
+                .setOffset(0, 4);
+        } else if (config.lastScene === "rockpaperscissors") {
+            this.player = this.physics.add
+                .sprite(40, 172, "player-front")
+                .setSize(10, 16)
+                .setOffset(0, 4);
+        } else if (config.lastScene === "hangman") {
+            this.player = this.physics.add
+                .sprite(600, 140, "player-front")
+                .setSize(10, 16)
+                .setOffset(0, 4);
+        }
 
         this.physics.add.collider(this.player, worldLayer);
 
@@ -88,6 +106,7 @@ class main extends Phaser.Scene {
     winGame() {
         if (config.inventory.some(item => item === "water")) {
             console.log("You Win!!!!!!")
+            console.log("Time: " + config.timer / 60);
         } else if (config.inventory.some(item => item === "bucket")) {
             console.log("Missing Water");
         } else {
@@ -139,20 +158,20 @@ class main extends Phaser.Scene {
 
     fetchWeather() {
         return fetch('https://api.openweathermap.org/data/2.5/onecall?lat=39.1031&lon=84.5120&exclude=minutely,hourly,daily&appid=a9915cce5540225f7997bb5ed0988782')
-        .then(response => response.json());
+            .then(response => response.json());
     }
-    
-    async setWeather(){
-        try{
+
+    async setWeather() {
+        try {
             const response = await this.fetchWeather();
             console.log(response.current.weather[0].main);
-        }
-        catch{
+        } catch {
             console.log("oof");
         }
     }
 
     update(time, delta) {
         this.movePlayerManager();
+        config.timer += 0.01666666666;
     }
 }
