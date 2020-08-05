@@ -34,6 +34,16 @@ class preloadmain extends Phaser.Scene {
 
         this.load.image("path", "mainmap/assets/sprites/path.png");
 
+        //Rockpaperscissors assets
+        this.load.image("background", "rockpaperscissors/assets/background.jpg");
+        this.load.image("rock", "rockpaperscissors/assets/rock.png");
+        this.load.image("paper", "rockpaperscissors/assets/paper.png");
+        this.load.image("scissors", "rockpaperscissors/assets/scissors.png");
+        this.load.image("questionmark", "rockpaperscissors/assets/questionmark.png");
+        this.load.image("winScreen", "rockpaperscissors/assets/winScreen.png");
+        this.load.image("loseScreen", "rockpaperscissors/assets/loseScreen.png");
+
+
         //Hangman assets 
         this.load.bitmapFont("pixelFont", "../hangman/assets/fonts/font.png", "../hangman/assets/fonts/font.xml");
         
