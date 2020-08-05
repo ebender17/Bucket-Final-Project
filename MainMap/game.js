@@ -3,7 +3,7 @@ var config = {
     width: 800, // Canvas width in pixels
     height: 600, // Canvas height in pixels
     parent: "game-container", // ID of the DOM element to add the canvas to
-    scene: [preloadmain, main, hangman],
+    scene: [LoadingScene, StartScene, preloadmain, main, hangman],
     pixelArt: true,
     physics: {
         default: "arcade",
@@ -12,7 +12,9 @@ var config = {
             gravity: { y: 0 } // Top down game, so no gravity
         }
     },
-    inventory: []
+    inventory: [],
+    timer: 0,
+    lastScene: "mainmenu"
 };
 
 var game = new Phaser.Game(config);
