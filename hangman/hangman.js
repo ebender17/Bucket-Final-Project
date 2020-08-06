@@ -73,6 +73,7 @@ class hangman extends Phaser.Scene {
                 else if (this.didWin === false) {
                     this.loose_text = this.add.bitmapText(500, 200, "pixelFont", "You lost.", 48);
                     this.loose_text.tint = 0xffffff;
+                    config.lastScene = "hangman";
 
                     //Go back to main map
                     this.time.delayedCall(3000, () => {

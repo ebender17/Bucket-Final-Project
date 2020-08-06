@@ -77,13 +77,9 @@ class main extends Phaser.Scene {
 
     loadHouse2() {
         if (config.inventory.some(item => item === "key1")) {
-            config.inventory.push("key2");
-            console.log("key 2 added to the inventory");
             this.scene.start("rockpaperscissors");
         } else {
             console.log("Missing Key 1");
-            //Added this in here just to test if the scene worked with the rest of the game, remove when needed
-            this.scene.start("rockpaperscissors");
         }
     }
 
@@ -165,8 +161,10 @@ class main extends Phaser.Scene {
     async setWeather() {
         try {
             const response = await this.fetchWeather();
+            //For testing
             console.log(response.current.weather[0].main);
         } catch {
+            //For testing
             console.log("oof");
         }
     }
