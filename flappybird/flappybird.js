@@ -19,7 +19,7 @@ class flappybird extends Phaser.Scene{
         this.physics.world.enableBody(this.bird);
         this.bird.body.gravity.y = 1000;
 
-        var startLabel = this.add.text(500, 245, "Press Space to Start\nGet 5 to Win!",{
+        var startLabel = this.add.text(445, 245, "Press Space to Start\nGet 5 to Win!",{
             fontSize: '64px Arial', fill: '#00F' 
         });
         startLabel.setOrigin(0.5, 0.5);
@@ -28,7 +28,7 @@ class flappybird extends Phaser.Scene{
 			targets: startLabel,
 			alpha: 0,
 			ease: 'Power1',
-			duration: 1500,
+			duration: 2000,
 		});
  
         var spaceKey = this.input.keyboard.addKey('SPACE');
@@ -43,7 +43,7 @@ class flappybird extends Phaser.Scene{
   
         this.addNewRowOfPipes();
         this.time.addEvent({
-          delay: 1500,
+          delay: 2000,
           callback: this.addNewRowOfPipes,
           callbackScope: this,
           loop: true
