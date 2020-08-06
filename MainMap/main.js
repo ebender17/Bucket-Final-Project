@@ -104,6 +104,7 @@ class main extends Phaser.Scene {
         if (config.inventory.some(item => item === "water")) {
             console.log("You Win!!!!!!")
             console.log("Time: " + config.timer / 60);
+            this.scene.start("endGame");
         } else if (config.inventory.some(item => item === "bucket")) {
             console.log("Missing Water");
         } else {

@@ -152,4 +152,8 @@ class rockpaperscissors extends Phaser.Scene {
         }
 
     }
+
+    update() {
+        config.timer += 0.01666666666;
+    }
 }

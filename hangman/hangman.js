@@ -251,4 +251,8 @@ class hangman extends Phaser.Scene {
         return `Guesses: ${this.guesses.join(', ')}`;
     }
 
+    update() {
+        config.timer += 0.01666666666;
+    }
+
 }

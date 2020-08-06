@@ -46,11 +46,19 @@ class preloadmain extends Phaser.Scene {
 
         //Hangman assets 
         this.load.bitmapFont("pixelFont", "../hangman/assets/fonts/font.png", "../hangman/assets/fonts/font.xml");
-        
+
         this.load.image("hangman_background", "../hangman/assets/background/parallax-demon-woods-bg.png");
-        this.load.image("far_trees", "../hangman/assets/background/parallax-demon-woods-far-trees.png"); 
-        this.load.image("mid_trees", "../hangman/assets/background/parallax-demon-woods-mid-trees.png"); 
+        this.load.image("far_trees", "../hangman/assets/background/parallax-demon-woods-far-trees.png");
+        this.load.image("mid_trees", "../hangman/assets/background/parallax-demon-woods-mid-trees.png");
         this.load.image("close_trees", "../hangman/assets/background/parallax-demon-woods-close-trees.png");
+
+        //End Screen assets
+        this.load.image("bg1", "endscreen/assets/landscape_0000_1_trees.png");
+        this.load.image("bg2", "endscreen/assets/landscape_0001_2_trees.png");
+        this.load.image("bg3", "endscreen/assets/landscape_0002_3_trees.png");
+        this.load.image("bg4", "endscreen/assets/landscape_0003_4_mountain.png");
+        this.load.image("bg5", "endscreen/assets/landscape_0004_5_clouds.png");
+        this.load.image("bg6", "endscreen/assets/landscape_0005_6_background.png");
     }
 
     create() {

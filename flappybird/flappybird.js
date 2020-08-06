@@ -74,6 +74,8 @@ class flappybird extends Phaser.Scene {
             fill: "#ffffff"
         });
 
+        config.timer += 0.01666666666;
+
         if (score > 9) {
             config.lastScene = "flappybird";
             this.scene.start("main");
