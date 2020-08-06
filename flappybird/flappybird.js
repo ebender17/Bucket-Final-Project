@@ -12,15 +12,13 @@ class flappybird extends Phaser.Scene{
  
     }
  
-    create() {
-        this.backgroundColor = '#71c5cf';
- 
+    create() { 
         this.bird = this.add.sprite(100, 245, 'bird');
         this.physics.world.enableBody(this.bird);
         this.bird.body.gravity.y = 1000;
 
-        var startLabel = this.add.text(445, 245, "Press Space to Start\nGet 5 to Win!",{
-            fontSize: '64px Arial', fill: '#00F' 
+        var startLabel = this.add.text(350, 245, "Press Space to Start\nGet 10 to Win!",{
+            fontSize: '64px Arial', fill: '#ffffff' 
         });
         startLabel.setOrigin(0.5, 0.5);
         
@@ -43,7 +41,7 @@ class flappybird extends Phaser.Scene{
   
         this.addNewRowOfPipes();
         this.time.addEvent({
-          delay: 2000,
+          delay: 1500,
           callback: this.addNewRowOfPipes,
           callbackScope: this,
           loop: true
@@ -71,8 +69,8 @@ class flappybird extends Phaser.Scene{
             font: "30px Arial", fill: "#ffffff" 
         });
 
-        if(score > 4){
-            this.scene.start("main");
+        if(score > 9){
+            this.scene.start("main");;
         }
     }
  
@@ -121,7 +119,7 @@ class flappybird extends Phaser.Scene{
             return;
         }
         this.bird.alive = false;
-        if(score > 4){
+        if(score > 9){
             this.scene.start("main");
         }else{
             this.restartGame();
