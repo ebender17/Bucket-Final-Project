@@ -72,6 +72,7 @@ class main extends Phaser.Scene {
     loadHouse1() {
         config.inventory.push("key1");
         console.log("key 1 added to the inventory");
+        this.scene.start("flappybird");
     }
 
     loadHouse2() {
