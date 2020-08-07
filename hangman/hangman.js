@@ -102,20 +102,20 @@ class hangman extends Phaser.Scene {
     buildLabels() {
         this.guess = document.getElementById('guessForm');
         this.guess.style.position = "absolute";
-        this.guess.style.left = '330px';
+        this.guess.style.left = '530px';
         this.guess.style.top = '545px';
 
         this.guessesText.style.position = "absolute";
         this.guessesText.style.fontSize = "10px";
         this.guessesText.style.columnWidth = '100px';
         this.guessesText.style.lineHeight = '16px';
-        this.guessesText.style.left = '200px';
+        this.guessesText.style.left = '400px';
         this.guessesText.style.top = '490px';
 
 
         this.wordHolderText.style.fontSize = "10px";
         this.wordHolderText.style.position = "absolute";
-        this.wordHolderText.style.left = '450px';
+        this.wordHolderText.style.left = '650px';
         this.wordHolderText.style.top = '490px';
 
     }
