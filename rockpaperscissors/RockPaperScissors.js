@@ -44,11 +44,11 @@ class rockpaperscissors extends Phaser.Scene {
         this.rock.setScale(0.3);
 
         //Onclick effects
-        this.rock.on('pointerdown', function (pointer) {
+        this.rock.on('pointerdown', function(pointer) {
             this.setTint(0x666666);
             scene.play(game, 'rock');
         });
-        this.rock.on('pointerup', function (pointer) {
+        this.rock.on('pointerup', function(pointer) {
             this.clearTint();
         });
 
@@ -58,11 +58,11 @@ class rockpaperscissors extends Phaser.Scene {
         this.paper.setScale(0.3);
 
         //Onclick effects
-        this.paper.on('pointerdown', function (pointer) {
+        this.paper.on('pointerdown', function(pointer) {
             this.setTint(0x666666);
             scene.play(game, 'paper');
         });
-        this.paper.on('pointerup', function (pointer) {
+        this.paper.on('pointerup', function(pointer) {
             this.clearTint();
         });
 
@@ -72,11 +72,11 @@ class rockpaperscissors extends Phaser.Scene {
         this.scissors.setScale(0.3);
 
         //Onclick effects
-        this.scissors.on('pointerdown', function (pointer) {
+        this.scissors.on('pointerdown', function(pointer) {
             this.setTint(0x666666);
             scene.play(game, 'scissors')
         });
-        this.scissors.on('pointerup', function (pointer) {
+        this.scissors.on('pointerup', function(pointer) {
             this.clearTint();
         });
 
@@ -153,6 +153,7 @@ class rockpaperscissors extends Phaser.Scene {
             config.lastScene = "rockpaperscissors";
             config.inventory.push("key2");
             console.log("key 2 added to the inventory");
+            config.txt = "Key 2 has been added to your inventory!";
             this.time.delayedCall(3000, () => {
                 this.scene.start("main")
             })
@@ -180,6 +181,7 @@ class rockpaperscissors extends Phaser.Scene {
             this.paper.removeInteractive();
             this.scissors.removeInteractive();
             config.lastScene = "rockpaperscissors";
+            config.txt = "You failed, try again!";
             this.time.delayedCall(3000, () => {
                 this.scene.start("main")
             });

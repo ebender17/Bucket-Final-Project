@@ -33,6 +33,7 @@ class preloadmain extends Phaser.Scene {
         this.load.image("entryway", "mainmap/assets/sprites/entry.png");
 
         this.load.image("path", "mainmap/assets/sprites/path.png");
+        this.load.audio("music", "mainmap/assets/gamesong.mp3");
 
         //Rockpaperscissors assets
         this.load.image("background", "rockpaperscissors/assets/background.jpg");

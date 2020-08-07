@@ -6,13 +6,13 @@ class hangman extends Phaser.Scene {
     create() {
         //Retrieving word for game
         (async() => {
-            try { 
-                const response = await this.getRandomWord(); 
-                this.word = response.word; 
-                this.wordHolderText.innerHTML = this.getWordHolderText(); 
-            } 
-            catch { 
-                console.log('Failed to retrieve word.'); 
+            try {
+                const response = await this.getRandomWord();
+                this.word = response.word;
+                this.wordHolderText.innerHTML = this.getWordHolderText();
+                console.log(this.word);
+            } catch {
+                console.log('Failed to retrieve word.');
             }
         })();
 
@@ -67,6 +67,7 @@ class hangman extends Phaser.Scene {
                     config.inventory.push("bucket");
                     console.log("bucket added to the inventory");
                     config.lastScene = "hangman";
+                    config.txt = "An empty bucket has been added to your inventory!";
                     this.time.delayedCall(3000, () => {
                         this.scene.start("main")
                     });
@@ -80,7 +81,7 @@ class hangman extends Phaser.Scene {
                     this.loose_text = this.add.bitmapText(500, 200, "pixelFont", "You lost.", 48);
                     this.loose_text.tint = 0xffffff;
                     config.lastScene = "hangman";
-
+                    config.txt = "You failed, try again!";
                     //Go back to main map
                     this.time.delayedCall(3000, () => {
                         this.scene.start("main")
@@ -95,7 +96,7 @@ class hangman extends Phaser.Scene {
 
     getRandomWord() {
         return fetch('https://hangman-micro-service-bpblrjerwh.now.sh?difficulty=easy')
-            .then(response => response.json()); 
+            .then(response => response.json());
     }
 
     buildLabels() {

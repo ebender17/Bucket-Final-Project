@@ -14,8 +14,8 @@ class endGame extends Phaser.Scene {
         this.userScore = this.add.text(225, 75, "Your Time: " + (config.timer / 60).toFixed(3), { fontSize: 35, fontStyle: 'bold', color: 0xCD5C5C });
         this.emily = this.add.text(225, 150, "Emily - Hangman", { fontSize: 20, fontStyle: 'bold', color: 0xCD5C5C });
         this.matthew = this.add.text(225, 225, "Matthew - Start Screen", { fontSize: 20, fontStyle: 'bold', color: 0xCD5C5C });
-        this.jimmy = this.add.text(225, 300, "Jimmy - Flappy Bird", { fontSize: 20, fontStyle: 'bold', color: 0xCD5C5C });
-        this.mark = this.add.text(225, 375, "Mark - Rock, Paper, Scissors", { fontSize: 20, fontStyle: 'bold', color: 0xCD5C5C });
+        this.jimmy = this.add.text(225, 300, "Mark - Flappy Bird", { fontSize: 20, fontStyle: 'bold', color: 0xCD5C5C });
+        this.mark = this.add.text(225, 375, "Jimmy - Rock, Paper, Scissors", { fontSize: 20, fontStyle: 'bold', color: 0xCD5C5C });
         this.aaron = this.add.text(225, 450, "Aaron - Main Map", { fontSize: 20, fontStyle: 'bold', color: 0xCD5C5C });
     }
 

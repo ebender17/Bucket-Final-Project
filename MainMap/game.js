@@ -14,7 +14,15 @@ var config = {
     },
     inventory: [],
     timer: 0,
-    lastScene: "mainmenu"
+    lastScene: "mainmenu",
+    weather: "",
+    txt: "",
+    missbucketghostsent: false,
+    misswatersent: false,
+    misskey1sent: false,
+    misskey2sent: false,
+    missbucketsent: false,
+    wateraddedsent: false
 };
 
 var game = new Phaser.Game(config);

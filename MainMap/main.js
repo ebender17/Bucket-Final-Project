@@ -15,7 +15,7 @@ class main extends Phaser.Scene {
         const aboveLayer = map.createStaticLayer("Above Player", tileset, 0, 0);
 
         worldLayer.setCollisionByProperty({ collides: true });
-        aboveLayer.setDepth(10);
+        //aboveLayer.setDepth(10);
 
         this.entry1 = this.physics.add.sprite(56, 728, "entryway");
         this.entry2 = this.physics.add.sprite(40, 152, "entryway");
@@ -24,27 +24,55 @@ class main extends Phaser.Scene {
         this.ghost = this.physics.add.sprite(608, 672, "ghost");
         this.ghost.play("ghost-anim");
 
+        this.music = this.sound.add("music");
+
+        var musicConfig = {
+            mute: false,
+            volume: 1,
+            rate: 1,
+            detune: 0,
+            seek: 0,
+            loop: false,
+            delay: 0
+        }
+
         //Loads player back into correct location based off where they last came from
         if (config.lastScene === "mainmenu") {
             this.player = this.physics.add
                 .sprite(592, 672, "player-front")
                 .setSize(10, 16)
                 .setOffset(0, 4);
+            this.time.delayedCall(2000, () => {
+                alert("Could You please find a bucket of water for me? Be sure to watch out, the weather is: " + config.weather + "!");
+            });
+            this.music.play(musicConfig);
         } else if (config.lastScene === "flappybird") {
             this.player = this.physics.add
                 .sprite(56, 748, "player-front")
                 .setSize(10, 16)
                 .setOffset(0, 4);
+            this.time.delayedCall(2000, () => {
+                alert("Key 1 has been added to your inventory!");
+            });
+            //this.showMessageBox("Key 1 has been added to your inventory!");
         } else if (config.lastScene === "rockpaperscissors") {
             this.player = this.physics.add
                 .sprite(40, 172, "player-front")
                 .setSize(10, 16)
                 .setOffset(0, 4);
+            this.time.delayedCall(2000, () => {
+                alert(config.txt);
+            });
+            //this.showMessageBox("Key 2 has been added to your inventory!");
         } else if (config.lastScene === "hangman") {
             this.player = this.physics.add
                 .sprite(600, 140, "player-front")
                 .setSize(10, 16)
                 .setOffset(0, 4);
+            this.time.delayedCall(2000, () => {
+                alert(config.txt);
+            });
+            //this.showMessageBox("An empty bucket has been added to your inventory!");
         }
 
         this.physics.add.collider(this.player, worldLayer);
@@ -68,7 +96,6 @@ class main extends Phaser.Scene {
         this.cursorKeys = this.input.keyboard.createCursorKeys();
 
     }
-
     loadHouse1() {
         config.inventory.push("key1");
         console.log("key 1 added to the inventory");
@@ -79,7 +106,11 @@ class main extends Phaser.Scene {
         if (config.inventory.some(item => item === "key1")) {
             this.scene.start("rockpaperscissors");
         } else {
-            console.log("Missing Key 1");
+            if (!config.misskey1sent) {
+                alert("Missing Key 1!");
+                console.log("Missing Key 1");
+                config.misskey1sent = true;
+            }
         }
     }
 
@@ -87,16 +118,28 @@ class main extends Phaser.Scene {
         if (config.inventory.some(item => item === "key2")) {
             this.scene.start("hangman");
         } else {
-            console.log("Missing Key 2");
+            if (!config.misskey2sent) {
+                alert("Missing Key 2!");
+                console.log("Missing Key 2");
+                config.misskey2sent = true;
+            }
         }
     }
 
     getWater() {
         if (config.inventory.some(item => item === "bucket")) {
-            config.inventory.push("water");
-            console.log("Water added to bucket");
+            if (!config.wateraddedsent) {
+                config.inventory.push("water");
+                alert("Water added to Bucket!");
+                console.log("Water added to bucket");
+                config.wateraddedsent = true;
+            }
         } else {
-            console.log("Missing Bucket");
+            if (!config.missbucketsent) {
+                alert("Missing Bucket!");
+                console.log("Missing Bucket");
+                config.missbucketsent = true;
+            }
         }
     }
 
@@ -106,9 +149,17 @@ class main extends Phaser.Scene {
             console.log("Time: " + config.timer / 60);
             this.scene.start("endGame");
         } else if (config.inventory.some(item => item === "bucket")) {
-            console.log("Missing Water");
+            if (!config.missbucketghostsent) {
+                alert("You are Missing Water!");
+                console.log("Missing Water");
+                config.missbucketghostsent = true;
+            }
         } else {
-            console.log("Missing Bucket");
+            if (!config.misswatersent) {
+                alert("You are missing the Bucket!");
+                console.log("Missing Bucket");
+                config.misswatersent = true;
+            }
         }
     }
 
@@ -162,8 +213,7 @@ class main extends Phaser.Scene {
     async setWeather() {
         try {
             const response = await this.fetchWeather();
-            //For testing
-            console.log(response.current.weather[0].main);
+            config.weather = response.current.weather[0].main;
         } catch {
             //For testing
             console.log("oof");
