@@ -4,8 +4,8 @@ class LoadingScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image("startButton", "mainmenu/assets/startButton.png");
-        this.load.image("mainMap", "mainmenu/assets/main.png");
+        this.load.image("startButton", "../mainmenu/assets/startButton.png");
+        this.load.image("mainMap", "../mainmenu/assets/main.png");
     }
 
     create() {

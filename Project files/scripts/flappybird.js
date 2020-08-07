@@ -6,9 +6,9 @@ class flappybird extends Phaser.Scene {
 
     }
     preload() {
-        this.load.image('bird', 'flappybird/assets/redbird.png');
-        this.load.image('pipe', 'flappybird/assets/pipe.png');
-        this.load.audio('jump', 'flappybird/assets/jump.wav');
+        this.load.image('bird', '../flappybird/assets/redbird.png');
+        this.load.image('pipe', '../flappybird/assets/pipe.png');
+        this.load.audio('jump', '../flappybird/assets/jump.wav');
 
     }
 
