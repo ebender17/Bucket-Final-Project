@@ -4,9 +4,17 @@ class hangman extends Phaser.Scene {
     }
 
     create() {
+        //Retrieving word for game
         (async() => {
-            this.word = await this.getRandomWord();
-            this.wordHolderText.innerHTML = await this.getWordHolderText();
+            try { 
+                const response = await this.getRandomWord(); 
+                this.word = response.word; 
+                console.log(this.word); 
+                this.wordHolderText.innerHTML = this.getWordHolderText(); 
+            } 
+            catch { 
+                console.log('Failed to retrieve word.'); 
+            }
         })();
 
         this.background = this.add.tileSprite(0, 0, config.width, config.height, 'hangman_background').setScale(2);
@@ -33,11 +41,13 @@ class hangman extends Phaser.Scene {
 
         this.drawGallows();
         this.buildLabels();
+        this.guessInput.disabled = false;
+        this.guessButton.disabled = false;
         this.guessesText.innerHTML = this.getGuessesText();
 
         this.guess.addEventListener('submit', function(e) {
             e.preventDefault();
-            const letter = guessInput.value;
+            const letter = this.guessInput.value;
 
             this.playerGuess(letter);
 
@@ -62,9 +72,6 @@ class hangman extends Phaser.Scene {
                         this.scene.start("main")
                     });
 
-                    //wonHangman set to true 
-                    config.wonHangman = true;
-
                     //Remove html input 
                     this.hangmanWrapper.classList.add("d-none");
 
@@ -87,10 +94,9 @@ class hangman extends Phaser.Scene {
         }.bind(this));
     }
 
-    async getRandomWord() {
-        let response = await fetch('https://hangman-micro-service-bpblrjerwh.now.sh?difficulty=easy');
-        let { word } = await response.json();
-        return word;
+    getRandomWord() {
+        return fetch('https://hangman-micro-service-bpblrjerwh.now.sh?difficulty=easy')
+            .then(response => response.json()); 
     }
 
     buildLabels() {
@@ -191,7 +197,8 @@ class hangman extends Phaser.Scene {
         });
 
         this.guesses.push(letter);
-        // console.log("Guesses: ", this.guesses); 
+        console.log("Letter: ", letter); 
+        console.log("Guesses: ", this.guesses); 
         console.log("Word from api: ", this.word);
 
         if (this.word.includes(letter)) {
