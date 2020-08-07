@@ -37,10 +37,10 @@ class RockPaperScissors {
             }
         }
         else {
-            if((this.userScore >= 5 && this.cpuScore >=5) && this.userScore > this.cpuScore){
+            if(this.userScore >= 5 && this.userScore > this.cpuScore){
                 return "playerWin";
             }
-            else if((this.userScore >= 5 && this.cpuScore >=5) && this.cpuScore > this.userScore){
+            else if(this.cpuScore >=5 && this.cpuScore > this.userScore){
                 return "cpuWin";
             }
             return "inProgress";
