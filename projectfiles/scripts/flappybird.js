@@ -6,9 +6,9 @@ class flappybird extends Phaser.Scene {
 
     }
     preload() {
-        this.load.image('bird', 'flappybird/assets/redbird.png');
-        this.load.image('pipe', 'flappybird/assets/pipe.png');
-        this.load.audio('jump', 'flappybird/assets/jump.wav');
+        this.load.image('bird', 'projectfiles/flappybird/assets/redbird.png');
+        this.load.image('pipe', 'projectfiles/flappybird/assets/pipe.png');
+        this.load.audio('jump', 'projectfiles/flappybird/assets/jump.wav');
 
     }
 
@@ -72,10 +72,11 @@ class flappybird extends Phaser.Scene {
         this.time.delayedCall(2400, () => {
             this.labelScore.destroy();
             this.labelScore = this.add.text(20, 20, 'Score: ' + score, {
-            font: "30px Arial",
-            fill: "#ffffff"});
-         });
-        
+                font: "30px Arial",
+                fill: "#ffffff"
+            });
+        });
+
 
         config.timer += 0.01666666666;
 
@@ -104,7 +105,7 @@ class flappybird extends Phaser.Scene {
     addNewRowOfPipes() {
         var hole = Math.floor(Math.random() * 5) + 1;
         this.time.delayedCall(2600, () => {
-           score += 1
+            score += 1
         });
         for (var i = 0; i < 10; i++) {
             if (i != hole && i != hole + 1)
