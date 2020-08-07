@@ -5,16 +5,7 @@ class hangman extends Phaser.Scene {
 
     create() {
         //Retrieving word for game
-        (async() => {
-            try {
-                const response = await this.getRandomWord();
-                this.word = response.word;
-                this.wordHolderText.innerHTML = this.getWordHolderText();
-                console.log(this.word);
-            } catch {
-                console.log('Failed to retrieve word.');
-            }
-        })();
+        this.setRandomWord(); 
 
         this.background = this.add.tileSprite(0, 0, config.width, config.height, 'hangman_background').setScale(2);
         this.farTrees = this.add.tileSprite(0, 0, config.width, config.height, 'far_trees').setScale(2);
@@ -65,7 +56,6 @@ class hangman extends Phaser.Scene {
 
                     //Add bucket to inventory and go back to main map 
                     config.inventory.push("bucket");
-                    console.log("bucket added to the inventory");
                     config.lastScene = "hangman";
                     config.txt = "An empty bucket has been added to your inventory!";
                     this.time.delayedCall(3000, () => {
@@ -97,6 +87,29 @@ class hangman extends Phaser.Scene {
     getRandomWord() {
         return fetch('https://hangman-micro-service-bpblrjerwh.now.sh?difficulty=easy')
             .then(response => response.json());
+    }
+
+    async setRandomWord() { 
+        try {
+            const response = await this.getRandomWord();
+            this.word = response.word;
+            this.wordHolderText.innerHTML = this.getWordHolderText();
+            console.log(this.word);
+        } catch {
+            this.win_text = this.add.bitmapText(400, 200, "pixelFont", "Word API Unavailable", 48);
+            this.win_text.tint = 0xffffff;
+
+            //Add bucket to inventory and go back to main map 
+            config.inventory.push("bucket");
+            config.lastScene = "hangman";
+            config.txt = "An empty bucket has been added to your inventory!";
+            this.time.delayedCall(5000, () => {
+                this.scene.start("main")
+            });
+
+            //Remove html input 
+            this.hangmanWrapper.classList.add("d-none");
+        }
     }
 
     buildLabels() {
