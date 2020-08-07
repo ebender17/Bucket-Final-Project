@@ -38,6 +38,7 @@ class flappybird extends Phaser.Scene {
                 return;
             }
             this.bird.body.velocity.y = -350;
+
         }, this);
 
         this.pipes = this.physics.add.group();
@@ -82,21 +83,6 @@ class flappybird extends Phaser.Scene {
             config.lastScene = "flappybird";
             this.scene.start("main");
         }
-    }
-
-    jump() {
-        if (this.bird.alive == false) {
-            return;
-        }
-        this.bird.body.velocity.y = -350;
-
-        this.scene.tweens.add({
-            targets: this.bird,
-            props: { angle: -20 },
-            duration: 150,
-            ease: "Power0"
-        });
-
     }
 
     restartGame() {
