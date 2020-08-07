@@ -28,15 +28,21 @@ class RockPaperScissors {
         var cpuSelection = this.generateCPUResponse();
         this.determineWinner(userSelection, cpuSelection);
 
-        if (this.round >= 6) {
+        if (this.userScore == 5 && this.cpuScore != 5) {
             if (this.userScore > this.cpuScore) {
                 return "playerWin";
             }
-            else if (this.userScore < this.cpuScore) {
+            else if (this.userScore != 5 && this.cpuScore == 5) {
                 return "cpuWin";
             }
         }
         else {
+            if(this.userScore > this.cpuScore){
+                return "playerWin";
+            }
+            else if(this.cpuScore > this.userScore){
+                return "cpuWin";
+            }
             return "inProgress";
         }
     }
