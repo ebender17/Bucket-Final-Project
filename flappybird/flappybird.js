@@ -1,5 +1,5 @@
 var game;
-var score = 0;
+var score = 0 - 1;
 class flappybird extends Phaser.Scene {
     constructor() {
         super('flappybird');
@@ -15,7 +15,7 @@ class flappybird extends Phaser.Scene {
     create() {
         this.backgroundColor = '#71c5cf';
 
-        this.bird = this.add.sprite(100, 245, 'bird');
+        this.bird = this.add.sprite(200, 245, 'bird');
         this.physics.world.enableBody(this.bird);
         this.bird.body.gravity.y = 1000;
 
@@ -68,11 +68,13 @@ class flappybird extends Phaser.Scene {
         }
 
 
-        this.labelScore.destroy();
-        this.labelScore = this.add.text(20, 20, 'Score: ' + score, {
+        this.time.delayedCall(2400, () => {
+            this.labelScore.destroy();
+            this.labelScore = this.add.text(20, 20, 'Score: ' + score, {
             font: "30px Arial",
-            fill: "#ffffff"
-        });
+            fill: "#ffffff"});
+         });
+        
 
         config.timer += 0.01666666666;
 
@@ -115,10 +117,12 @@ class flappybird extends Phaser.Scene {
 
     addNewRowOfPipes() {
         var hole = Math.floor(Math.random() * 5) + 1;
-        score += 1;
+        this.time.delayedCall(2600, () => {
+           score += 1
+        });
         for (var i = 0; i < 10; i++) {
             if (i != hole && i != hole + 1)
-                this.addOnePipe(400, i * 60 + 10);
+                this.addOnePipe(800, i * 60 + 10);
         }
     }
 
