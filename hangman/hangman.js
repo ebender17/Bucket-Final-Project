@@ -9,7 +9,6 @@ class hangman extends Phaser.Scene {
             try { 
                 const response = await this.getRandomWord(); 
                 this.word = response.word; 
-                console.log(this.word); 
                 this.wordHolderText.innerHTML = this.getWordHolderText(); 
             } 
             catch { 
@@ -177,13 +176,10 @@ class hangman extends Phaser.Scene {
 
     playerGuess(letter) {
         if (!letter) {
-            alert(`No letter guessed.`);
             throw new Error(`No letter provided.`);
         } else if (!/^[a-zA-Z]*$/g.test(letter)) {
-            alert(`Invalid guess. Please enter a letter.`);
             throw new Error(`Invalid guess`);
         } else if (letter.length > 1) {
-            alert(`Guess invalid length.`);
             throw new Error(`Invalid guess`);
         } else {
             letter.toLowerCase();
@@ -197,9 +193,6 @@ class hangman extends Phaser.Scene {
         });
 
         this.guesses.push(letter);
-        console.log("Letter: ", letter); 
-        console.log("Guesses: ", this.guesses); 
-        console.log("Word from api: ", this.word);
 
         if (this.word.includes(letter)) {
             this.getWordHolderText();
