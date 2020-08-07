@@ -4,13 +4,13 @@ class rockpaperscissors extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image("background", "../rockepaperscissors/assets/background.jpg");
-        this.load.image("rock", "../rockepaperscissors/assets/rock.png");
-        this.load.image("paper", "../rockepaperscissors/assets/paper.png");
-        this.load.image("scissors", "../assets/rockepaperscissors/scissors.png");
-        this.load.image("questionmark", "../assets/rockepaperscissors/questionmark.png");
-        this.load.image("winScreen", "../assets/rockepaperscissors/winScreen.png");
-        this.load.image("loseScreen", "../assets/rockepaperscissors/loseScreen.png");
+        this.load.image("background", "projectfiles/rockepaperscissors/assets/background.jpg");
+        this.load.image("rock", "projectfiles/rockepaperscissors/assets/rock.png");
+        this.load.image("paper", "projectfiles/rockepaperscissors/assets/paper.png");
+        this.load.image("scissors", "projectfiles/assets/rockepaperscissors/scissors.png");
+        this.load.image("questionmark", "projectfiles/assets/rockepaperscissors/questionmark.png");
+        this.load.image("winScreen", "projectfiles/assets/rockepaperscissors/winScreen.png");
+        this.load.image("loseScreen", "projectfiles/assets/rockepaperscissors/loseScreen.png");
     }
 
     create() {
