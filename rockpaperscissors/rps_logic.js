@@ -18,7 +18,7 @@ class RockPaperScissors {
             this.userScore++;
             this.round++
         }
-        else if ((userSelection == "scissors" && cpuSelection == "rock") || (userSelection == "paper" && cpuSelection == "scissors") || (userSelection == "scissors" && cpuSelection == "rock")) {
+        else if ((userSelection == "rock" && cpuSelection == "paper") || (userSelection == "paper" && cpuSelection == "scissors") || (userSelection == "scissors" && cpuSelection == "rock")) {
             this.cpuScore++;
             this.round++;
         }
@@ -37,10 +37,10 @@ class RockPaperScissors {
             }
         }
         else {
-            if(this.userScore > this.cpuScore){
+            if((this.userScore >= 5 && this.cpuScore >=5) && this.userScore > this.cpuScore){
                 return "playerWin";
             }
-            else if(this.cpuScore > this.userScore){
+            else if((this.userScore >= 5 && this.cpuScore >=5) && this.cpuScore > this.userScore){
                 return "cpuWin";
             }
             return "inProgress";

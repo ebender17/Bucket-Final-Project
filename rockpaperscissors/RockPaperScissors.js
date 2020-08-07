@@ -44,11 +44,11 @@ class rockpaperscissors extends Phaser.Scene {
         this.rock.setScale(0.3);
 
         //Onclick effects
-        this.rock.on('pointerdown', function(pointer) {
+        this.rock.on('pointerdown', function (pointer) {
             this.setTint(0x666666);
             scene.play(game, 'rock');
         });
-        this.rock.on('pointerup', function(pointer) {
+        this.rock.on('pointerup', function (pointer) {
             this.clearTint();
         });
 
@@ -58,11 +58,11 @@ class rockpaperscissors extends Phaser.Scene {
         this.paper.setScale(0.3);
 
         //Onclick effects
-        this.paper.on('pointerdown', function(pointer) {
+        this.paper.on('pointerdown', function (pointer) {
             this.setTint(0x666666);
             scene.play(game, 'paper');
         });
-        this.paper.on('pointerup', function(pointer) {
+        this.paper.on('pointerup', function (pointer) {
             this.clearTint();
         });
 
@@ -72,11 +72,11 @@ class rockpaperscissors extends Phaser.Scene {
         this.scissors.setScale(0.3);
 
         //Onclick effects
-        this.scissors.on('pointerdown', function(pointer) {
+        this.scissors.on('pointerdown', function (pointer) {
             this.setTint(0x666666);
             scene.play(game, 'scissors')
         });
-        this.scissors.on('pointerup', function(pointer) {
+        this.scissors.on('pointerup', function (pointer) {
             this.clearTint();
         });
 
@@ -128,6 +128,23 @@ class rockpaperscissors extends Phaser.Scene {
 
         //Determine win/loss screen
         if (result == "playerWin") {
+            //Update the scoreboard
+            this.playerScore.destroy();
+            this.playerScore = this.add.text(20, 20, "Player score: " + game.userScore);
+
+            this.cpuScore.destroy();
+            this.cpuScore = this.add.text(20, 40, "CPU score: " + game.cpuScore);
+
+            this.roundCount.destroy();
+            this.roundCount = this.add.text(20, 60, "Round: " + game.round);
+
+            this.playerChoice.destroy();
+            this.playerChoice = this.add.text(20, 100, "Player choice: " + playerChoice);
+
+            this.cpuChoice.destroy();
+            this.cpuChoice = this.add.text(20, 120, "CPU Choice: " + game.cpuChoice);
+
+            //Show win screen
             this.questionmark.destroy();
             this.winScreen.visible = true;
             this.rock.removeInteractive();
@@ -140,6 +157,23 @@ class rockpaperscissors extends Phaser.Scene {
                 this.scene.start("main")
             })
         } else if (result == "cpuWin") {
+            //Update the scoreboard
+            this.playerScore.destroy();
+            this.playerScore = this.add.text(20, 20, "Player score: " + game.userScore);
+
+            this.cpuScore.destroy();
+            this.cpuScore = this.add.text(20, 40, "CPU score: " + game.cpuScore);
+
+            this.roundCount.destroy();
+            this.roundCount = this.add.text(20, 60, "Round: " + game.round);
+
+            this.playerChoice.destroy();
+            this.playerChoice = this.add.text(20, 100, "Player choice: " + playerChoice);
+
+            this.cpuChoice.destroy();
+            this.cpuChoice = this.add.text(20, 120, "CPU Choice: " + game.cpuChoice);
+
+            //Show loss screen
             this.questionmark.destroy();
             this.loseScreen.visible = true;
             this.rock.removeInteractive();
