@@ -4,36 +4,36 @@ class preloadmain extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image("tiles", "projectfiles/mainmap/Assets/Tilesets/final_proj.png");
-        this.load.tilemapTiledJSON("map", "projectfiles/mainmap/Assets/Tilemaps/main.json");
-        this.load.spritesheet("ghost", "projectfiles/mainmap/assets/sprites/ghost.png", {
+        this.load.image("tiles", "projectfiles/MainMap/Assets/Tilesets/final_proj.png");
+        this.load.tilemapTiledJSON("map", "projectfiles/MainMap/Assets/Tilemaps/main.json");
+        this.load.spritesheet("ghost", "projectfiles/MainMap/Assets/Sprites/ghost.png", {
             frameWidth: 16,
             frameHeight: 16
         });
-        this.load.spritesheet("player-walk-back", "projectfiles/mainmap/assets/sprites/walk-back-boy.png", {
+        this.load.spritesheet("player-walk-back", "projectfiles/MainMap/Assets/Sprites/walk-back-boy.png", {
             frameWidth: 16,
             frameHeight: 16
         });
-        this.load.spritesheet("player-walk-front", "projectfiles/mainmap/assets/sprites/walk-front-boy.png", {
+        this.load.spritesheet("player-walk-front", "projectfiles/MainMap/Assets/Sprites/walk-front-boy.png", {
             frameWidth: 16,
             frameHeight: 16
         });
-        this.load.spritesheet("player-walk-left", "projectfiles/mainmap/assets/sprites/walk-left-boy.png", {
+        this.load.spritesheet("player-walk-left", "projectfiles/MainMap/Assets/Sprites/walk-left-boy.png", {
             frameWidth: 16,
             frameHeight: 16
         });
-        this.load.spritesheet("player-walk-right", "projectfiles/mainmap/assets/sprites/walk-right-boy.png", {
+        this.load.spritesheet("player-walk-right", "projectfiles/MainMap/Assets/Sprites/walk-right-boy.png", {
             frameWidth: 16,
             frameHeight: 16
         });
-        this.load.image("player-front", "projectfiles/mainmap/assets/sprites/boy-front.png");
-        this.load.image("player-back", "projectfiles/mainmap/assets/sprites/boy-back.png");
-        this.load.image("player-right", "projectfiles/mainmap/assets/sprites/boy-right.png");
-        this.load.image("player-left", "projectfiles/mainmap/assets/sprites/boy-left.png");
-        this.load.image("entryway", "projectfiles/mainmap/assets/sprites/entry.png");
+        this.load.image("player-front", "projectfiles/MainMap/Assets/Sprites/boy-front.png");
+        this.load.image("player-back", "projectfiles/MainMap/Assets/Sprites/boy-back.png");
+        this.load.image("player-right", "projectfiles/MainMap/Assets/Sprites/boy-right.png");
+        this.load.image("player-left", "projectfiles/MainMap/Assets/Sprites/boy-left.png");
+        this.load.image("entryway", "projectfiles/MainMap/Assets/Sprites/entry.png");
 
-        this.load.image("path", "projectfiles/mainmap/assets/sprites/path.png");
-        this.load.audio("music", "projectfiles/mainmap/assets/gamesong.mp3");
+        this.load.image("path", "projectfiles/MainMap/Assets/Sprites/path.png");
+        this.load.audio("music", "projectfiles/MainMap/Assets/gamesong.mp3");
 
         //Rockpaperscissors assets
         this.load.image("background", "projectfiles/rockpaperscissors/assets/background.jpg");
