@@ -28,12 +28,15 @@ class main extends Phaser.Scene {
 
         var musicConfig = {
             mute: false,
-            volume: 1,
+            volume: 0.25,
             rate: 1,
             detune: 0,
             seek: 0,
             loop: false,
             delay: 0
+        }
+        if (config.lastScene === "mainmenu") {
+            this.music.play(musicConfig);
         }
 
         //Loads player back into correct location based off where they last came from
@@ -45,7 +48,6 @@ class main extends Phaser.Scene {
             this.time.delayedCall(2000, () => {
                 alert("Could You please find a bucket of water for me? Be sure to watch out, the weather is: " + config.weather + "!");
             });
-            this.music.play(musicConfig);
         } else if (config.lastScene === "flappybird") {
             this.player = this.physics.add
                 .sprite(56, 748, "player-front")
